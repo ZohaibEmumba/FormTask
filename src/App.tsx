@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import TopNav from "./Components/TopNav/TopNav";
+import FormComponent from "./Components/Form/FormComponent";
+import { ThemeProvider } from "styled-components";
+import "./App.css";
+import { Switch } from "@mui/material";
 
-function App() {
+import {
+  lightTheme,
+  darkTheme,
+  GlobalStyles,
+} from "./Components/ThemeProvider/Theme";
+
+const App = () => {
+  const [theme, setTheme] = React.useState("light");
+  const themeToggler = () => {
+    theme === "light" ? setTheme("dark") : setTheme("light");
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
+      <GlobalStyles />
+      <TopNav />
+      <div className="switch">
+        <Switch onClick={themeToggler} />
+      </div>
+      <FormComponent />
+    </ThemeProvider>
   );
-}
+};
 
 export default App;
