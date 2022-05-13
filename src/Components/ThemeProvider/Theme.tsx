@@ -1,4 +1,12 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from "styled-components";
+
+declare module "styled-components" {
+  export interface DefaultTheme {
+    body: string;
+    text: string;
+  }
+}
+
 export const GlobalStyles = createGlobalStyle`
   body {
     background: ${({ theme }) => theme.body};
@@ -7,10 +15,10 @@ export const GlobalStyles = createGlobalStyle`
   }
 `;
 export const lightTheme = {
-  body: '#f1f1f1',
-  text: '#121620'
+  body: "#f1f1f1",
+  text: "#121620",
 };
 export const darkTheme = {
-  body: '#121620',
-  text: 'black'
+  body: "#121620",
+  text: "black",
 };

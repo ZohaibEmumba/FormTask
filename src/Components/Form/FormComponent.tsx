@@ -29,9 +29,9 @@ const FormComponent = () => {
     let file = e.target.files[0];
     if (file.size > 5e5) {
       window.alert("Please upload a file smaller than 500 KB");
-      return false;
+      return "";
     }
-    return file;
+    return e;
   };
 
   return (
@@ -41,15 +41,19 @@ const FormComponent = () => {
           name="file"
           control={control}
           defaultValue=""
-          render={({ field, fieldState: { error } }) => (
+          render={({ field: { onChange, value }, fieldState: { error } }) => (
             <label htmlFor="contained-button-file">
               <Input
-                {...field}
                 accept="image/*"
                 id="contained-button-file"
                 multiple
                 type="file"
-                onChange={uploadImage}
+                value={value}
+                onChange={(event) => {
+                  const e = uploadImage(event);
+                  console.log(e);
+                  if (e) onChange(e);
+                }}
               />
               <Button variant="contained" component="span">
                 Upload
