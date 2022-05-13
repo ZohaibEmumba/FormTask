@@ -149,6 +149,7 @@ const FormComponent = () => {
               onChange={onChange}
               error={!!error}
               helperText={error ? error.message : null}
+              placeholder="+923456789234"
             />
           )}
           rules={{ required: "student_reg_number required" }}
@@ -167,6 +168,7 @@ const FormComponent = () => {
               error={!!error}
               helperText={error ? error.message : null}
               type="email"
+              placeholder="emumba@gmail.com"
             />
           )}
           rules={{ required: "Email required" }}
