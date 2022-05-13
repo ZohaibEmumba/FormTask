@@ -69,7 +69,7 @@ const FormComponent = () => {
           render={({ field: { onChange, value }, fieldState: { error } }) => (
             <TextField
               className="fields"
-              label="Name"
+              label="Full Name"
               variant="outlined"
               value={value}
               onChange={onChange}
